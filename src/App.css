@@ -1,0 +1,16 @@
+body {
+	--window-header-height: 45px;
+	--viewport-height: calc(100vh - var(--window-header-height));
+}
+
+::-webkit-scrollbar {
+	height: 8px;
+	width: 5px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--hope-colors-accent9);
+	border-radius: 1ex;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+}

@@ -1,0 +1,58 @@
+{
+	"name": "pw-launcher",
+	"productName": "pw-launcher",
+	"version": "1.5.0",
+	"description": "pw-launcher",
+	"main": "electron/index.js",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development concurrently --kill-others \"npm run start-vite\" \"npm run start-forge\"",
+		"start-forge": "electron-forge start",
+		"start-vite": "vite",
+		"package": "cross-env NODE_ENV=production vite build && electron-forge package",
+		"make": "cross-env NODE_ENV=production vite build && electron-forge make",
+		"lint": "eslint ./src --ext .ts,.js,.tsx && prettier --check .",
+		"prepare": "husky install",
+		"prettier:fix": "prettier --write ."
+	},
+	"keywords": [],
+	"author": {
+		"name": "d0kur0",
+		"email": "dev.dokuro@gmail.com"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@hope-ui/solid": "^0.6.7",
+		"@nanostores/solid": "^0.4.2",
+		"@solidjs/router": "^0.8.4",
+		"@stitches/core": "^1.2.8",
+		"electron-squirrel-startup": "^1.0.0",
+		"nanostores": "^0.9.5",
+		"solid-icons": "^1.0.12",
+		"solid-js": "^1.7.6"
+	},
+	"devDependencies": {
+		"@electron-forge/cli": "^6.4.2",
+		"@electron-forge/maker-deb": "^6.4.2",
+		"@electron-forge/maker-rpm": "^6.4.2",
+		"@electron-forge/maker-squirrel": "^6.4.2",
+		"@electron-forge/maker-zip": "^6.4.2",
+		"@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+		"@trivago/prettier-plugin-sort-imports": "^4.2.0",
+		"@types/node": "^20.6.3",
+		"@typescript-eslint/eslint-plugin": "^6.7.3",
+		"@typescript-eslint/parser": "^6.7.3",
+		"concurrently": "^8.2.1",
+		"cross-env": "^7.0.3",
+		"electron": "^28.2.0",
+		"eslint": "^8.50.0",
+		"eslint-plugin-solid": "^0.13.0",
+		"eslint-plugin-unused-imports": "^3.0.0",
+		"husky": "^8.0.3",
+		"prettier": "^3.0.3",
+		"solid-devtools": "^0.27.3",
+		"typescript": "^5.1.3",
+		"vite": "^4.3.9",
+		"vite-plugin-commonjs-externals": "^0.1.3",
+		"vite-plugin-solid": "^2.7.0"
+	}
+}
