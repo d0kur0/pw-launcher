@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/d0kur0/pw-launcher/compare/v1.0.1...v1.0.2) (2024-01-29)
+
+
+### Bug Fixes
+
+* release assets v2 (fuck slash) ([4022c45](https://github.com/d0kur0/pw-launcher/commit/4022c45e462f5a5697f482f5dc701d977d5062b5))
+
 ## [1.0.1](https://github.com/d0kur0/pw-launcher/compare/v1.0.0...v1.0.1) (2024-01-29)
 
 
