@@ -1,4 +1,4 @@
-import { Anchor, Box, Button, IconButton } from "@hope-ui/solid";
+import { Anchor, Box, IconButton } from "@hope-ui/solid";
 import { useStore } from "@nanostores/solid";
 import { $translations } from "../stores/language";
 import { $gamePath, $gamePathActions } from "../stores/gamePath";
