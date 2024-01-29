@@ -1,3 +1,15 @@
+# 1.0.0 (2024-01-29)
+
+
+### Bug Fixes
+
+* понаставил линтеров, блять ([7978c08](https://github.com/d0kur0/pw-launcher/commit/7978c084bdb659d9b6426022ac62f0f032001843))
+
+
+### Features
+
+* initial commit ([3dabe26](https://github.com/d0kur0/pw-launcher/commit/3dabe26f34ce8755505e73c562a0fc6012c2547b))
+
 # [1.5.0](https://github.com/d0kur0/webm-desktop/compare/v1.4.2...v1.5.0) (2024-01-26)
 
 
