@@ -6,7 +6,7 @@ module.exports = {
 		[
 			"@semantic-release/github",
 			{
-				assets: [{ path: "gh_assetspw-launcher_setup_amd64.exe", label: "Windows Installer" }],
+				assets: [{ path: "gh_assets/pw-launcher_setup_amd64.exe", label: "Windows Installer" }],
 			},
 		],
 		[
