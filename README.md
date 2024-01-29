@@ -22,3 +22,15 @@ This warning is entirely harmless and only shows because the app is not signed. 
 ## Characters list screen
 
 ![3](screenshots/3.png)
+
+# Self build
+
+1. Install node.js for your OS
+2. Run this commands:
+
+```bash
+npm i
+npm run make
+```
+
+Check the `out` directory on end

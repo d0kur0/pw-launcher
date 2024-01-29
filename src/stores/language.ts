@@ -22,6 +22,8 @@ const translations: Record<Languages, Record<string, string | number>> = {
 		remove: "Удалить",
 
 		requireGamePath: "Сперва укажите путь к elementclient.exe",
+
+		acceptRemove: "Точно удалить?",
 	},
 	en: {
 		addCharacter: "Add character",
@@ -44,6 +46,8 @@ const translations: Record<Languages, Record<string, string | number>> = {
 		remove: "Remove",
 
 		requireGamePath: "Previosly setup elementclient path",
+
+		acceptRemove: "Really remove it?",
 	},
 };
 

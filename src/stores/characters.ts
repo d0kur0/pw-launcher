@@ -26,12 +26,13 @@ const create = action($characters, "create", ($store, charInfo: Character) => {
 });
 
 const remove = action($characters, "remove", ($store, id: number) => {
+	if (!confirm($translations.get().acceptRemove.toString())) return;
 	const newList = $store.get().filter((_, _id) => id !== _id);
 	localStorage.setItem("chars", JSON.stringify(newList));
 	$store.set(newList);
 });
 
-const start = action($characters, "start", ($store, id: number) => {
+const start = action($characters, "start", async ($store, id: number) => {
 	const character = $store.get().find((_, _id) => _id === id);
 	const elementClient = $gamePath.get();
 
@@ -42,7 +43,8 @@ const start = action($characters, "start", ($store, id: number) => {
 		});
 	}
 
-	ipcRenderer.send("game/start", { character, elementClient: $gamePath.get() });
+	const result = await ipcRenderer.invoke("game/start", { character, elementClient: $gamePath.get() });
+	console.log(result);
 });
 
 export const $characterActions = { create, remove, start };

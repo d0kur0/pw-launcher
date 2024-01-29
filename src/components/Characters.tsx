@@ -1,4 +1,4 @@
-import { Anchor, Box, Button } from "@hope-ui/solid";
+import { Anchor, Box, Button, IconButton } from "@hope-ui/solid";
 import { useStore } from "@nanostores/solid";
 import { $translations } from "../stores/language";
 import { $gamePath, $gamePathActions } from "../stores/gamePath";
@@ -6,6 +6,7 @@ import { CgSelectR } from "solid-icons/cg";
 import { useNavigate } from "@solidjs/router";
 import { $characterActions, $characters } from "../stores/characters";
 import { For } from "solid-js";
+import { FaRegularTrashCan } from "solid-icons/fa";
 
 import plug from "../assets/plug.webp";
 
@@ -88,12 +89,15 @@ export function Characters() {
 			)}
 
 			{!!characters().length && (
-				<Box css={{ mt: 24, display: "flex", flexDirection: "column", gap: 19 }}>
+				<Box css={{ mt: 24 }} class="grid">
 					<For each={characters()}>
 						{(char, id) => (
 							<Box
+								onClick={() => $characterActions.start(id())}
 								css={{
+									position: "relative",
 									p: 16,
+									cursor: "pointer",
 									display: "flex",
 									gap: 10,
 									alignItems: "center",
@@ -104,19 +108,24 @@ export function Characters() {
 								<Box>
 									<img style={{ width: "50px" }} src={char.iconPath ? char.iconPath : plug} />
 								</Box>
-								<Box css={{ flex: "1 1 0" }}>
+
+								<Box css={{ flex: "1 1 0", mr: 19 }}>
 									<Box css={{ fontWeight: "bold" }}>{char.name}</Box>
 									<Box css={{ color: "$neutral9" }}>{char.description || "-"}</Box>
 								</Box>
-								<Box css={{ display: "flex", gap: 7 }}>
-									<Button onClick={() => $characterActions.start(id())} size="sm" colorScheme="warning">
-										{translations().start}
-									</Button>
 
-									<Button size="sm" onClick={() => $characterActions.remove(id())} colorScheme="danger">
-										{translations().remove}
-									</Button>
-								</Box>
+								<IconButton
+									css={{ position: "absolute", top: "10px", right: "10px" }}
+									aria-label="remove"
+									icon={<FaRegularTrashCan />}
+									size="xs"
+									onClick={(event: Event) => {
+										event.stopPropagation();
+										event.stopImmediatePropagation();
+										$characterActions.remove(id());
+									}}
+									colorScheme="danger"
+								/>
 							</Box>
 						)}
 					</For>
