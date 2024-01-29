@@ -1,7 +1,7 @@
 {
 	"name": "pw-launcher",
 	"productName": "pw-launcher",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "pw-launcher",
 	"main": "electron/index.js",
 	"scripts": {

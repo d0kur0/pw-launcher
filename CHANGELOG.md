@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/d0kur0/pw-launcher/compare/v1.0.0...v1.0.1) (2024-01-29)
+
+
+### Bug Fixes
+
+* release assets ([bae67c2](https://github.com/d0kur0/pw-launcher/commit/bae67c24e9fb09fef337511ecd2b10e7228bf5ab))
+
 # 1.0.0 (2024-01-29)
 
 
