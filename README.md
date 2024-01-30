@@ -11,7 +11,7 @@ Goto [Releases page](https://github.com/d0kur0/pw-launcher/releases), download r
 
 This warning is entirely harmless and only shows because the app is not signed. Signing it would cost us [99€/year](https://developer.apple.com/support/compare-memberships/).
 
-## First screen
+## Empty screen
 
 ![1](screenshots/1.png)
 
