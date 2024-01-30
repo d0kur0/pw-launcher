@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/d0kur0/pw-launcher/compare/v1.1.0...v1.2.0) (2024-01-30)
+
+
+### Bug Fixes
+
+* remove unused imports ([237020a](https://github.com/d0kur0/pw-launcher/commit/237020a9aa7b4152e0c051d2302ce686b7c28a58))
+
+
+### Features
+
+* add edit abillity, minor code refactorings ([2ac6375](https://github.com/d0kur0/pw-launcher/commit/2ac6375193b077dc9d28201bb4933b5baf3cd1de))
+* just new release with minor changes ([b750093](https://github.com/d0kur0/pw-launcher/commit/b750093ec92a6e81bfe77cca7e7cecf819ba98be))
+
 # [1.1.0](https://github.com/d0kur0/pw-launcher/compare/v1.0.2...v1.1.0) (2024-01-29)
 
 
