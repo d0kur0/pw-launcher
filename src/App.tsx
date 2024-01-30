@@ -1,4 +1,4 @@
-import { NotificationsProvider, HopeProvider, Box, Heading, Anchor, Button } from "@hope-ui/solid";
+import { NotificationsProvider, HopeProvider, Box, Heading, Button } from "@hope-ui/solid";
 import { ErrorBoundary } from "solid-js";
 import "./App.css";
 import { ViewPort } from "./components/ViewPort";

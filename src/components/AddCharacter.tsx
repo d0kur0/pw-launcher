@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/solid";
 import { useNavigate, useParams } from "@solidjs/router";
 import { $translations } from "../stores/language";
 import { IoArrowBackSharp } from "solid-icons/io";
-import { For, createEffect, onMount } from "solid-js";
+import { For, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { $characterActions, $characters, Character } from "../stores/characters";
 
