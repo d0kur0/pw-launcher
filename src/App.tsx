@@ -11,22 +11,15 @@ import { AddCharacter } from "./components/AddCharacter";
 function ErrorScreen(props: { err: Error }) {
 	return (
 		<Box css={{ p: 16, px: 42 }}>
-			<Heading css={{ fontSize: "2rem" }}>Какая-то ошибка</Heading>
+			<Heading css={{ fontSize: "2rem" }}>__%$%^&*$ err.;';!</Heading>
 
-			<Box css={{ mt: 24 }}>
-				Какая-то рантайм ошибка, скорее всего потому, что разработчик сделал что-то хуево. <br />
-				Если возникает часто и хочется фикса, можно создать ишью{" "}
-				<Anchor css={{ color: "$accent10" }} external href="https://github.com/d0kur0/webm-desktop/issues">
-					гитхабе
-				</Anchor>{" "}
-				программы.
-			</Box>
+			<Box css={{ mt: 24 }}>Just restart what shit</Box>
 
-			<Button onClick={location.reload} css={{ mt: 24 }} colorScheme="warning">
-				Перезагрузить страницу
+			<Button onClick={() => location.reload()} css={{ mt: 24 }} colorScheme="warning">
+				try hot reload
 			</Button>
 
-			<Heading css={{ fontSize: "1.5rem", mt: 24 }}>Отладочная инфа</Heading>
+			<Heading css={{ fontSize: "1.5rem", mt: 24 }}>debug shit</Heading>
 
 			<Box css={{ mt: 19, backgroundColor: "$neutral5", p: 15, borderRadius: 15 }}>
 				<Box>{props.err?.name}</Box>
@@ -49,6 +42,7 @@ export function App() {
 						<Routes>
 							<Route path="/" component={Characters} />
 							<Route path="/add-char" component={AddCharacter} />
+							<Route path="/edit/:id" component={AddCharacter} />
 						</Routes>
 					</ViewPort>
 				</ErrorBoundary>

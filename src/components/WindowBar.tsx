@@ -35,10 +35,11 @@ const iconButtonStyles = {
 };
 
 export function WindowBar() {
-	const { colorMode, toggleColorMode } = useColorMode();
-	const translations = useStore($translations);
 	const language = useStore($language);
 	const navigate = useNavigate();
+	const translations = useStore($translations);
+
+	const { colorMode, toggleColorMode } = useColorMode();
 
 	const [isFullscreen, setIsFullscreen] = createSignal(false);
 	const [isDevToolsOpened, setIsDevToolsOpened] = createSignal(false);
@@ -68,9 +69,9 @@ export function WindowBar() {
 					css={{ scale: "0.8", ml: "-3px", mr: "-6px" }}
 					size="sm"
 					variant="outline"
+					onClick={() => navigate("/add-char")}
 					aria-label="add character"
 					colorScheme="primary"
-					onClick={() => navigate("/add-char")}
 				>
 					{translations().addCharacter}
 				</Button>

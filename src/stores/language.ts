@@ -2,52 +2,50 @@ import { action, atom, computed } from "nanostores";
 
 const translations: Record<Languages, Record<string, string | number>> = {
 	ru: {
-		addCharacter: "Добавить персонажа",
-		selectElementClient: "Выбрать путь к elementclient.exe",
-		gamePathMock: "Укажите путь к elementclient.exe",
-		emptyMessage: "Список персонажей пуст",
 		language: "Язык",
 		backToList: "Назад к списку персонажей",
+		addCharacter: "Добавить персонажа",
+		gamePathMock: "Укажите путь к elementclient.exe",
+		emptyMessage: "Список персонажей пуст",
+		selectElementClient: "Выбрать путь к elementclient.exe",
 
 		charName: "Название в лаунчере",
-		charIconPath: "Иконка персонажа",
-		charDescription: "Описание (необязательно)",
-		charRealName: "Ник персонажа (необязательно)",
 		charLogin: "Логин аккаунта",
+		charIconPath: "Иконка персонажа",
+		charRealName: "Ник персонажа (необязательно)",
 		charPassword: "Пароль аккаунта",
+		charDescription: "Описание (необязательно)",
 
-		create: "Создать",
-
+		edit: "Редактировать",
 		start: "Запустить",
+		create: "Сохранить",
 		remove: "Удалить",
 
-		requireGamePath: "Сперва укажите путь к elementclient.exe",
-
 		acceptRemove: "Точно удалить?",
+		requireGamePath: "Сперва укажите путь к elementclient.exe",
 	},
 	en: {
-		addCharacter: "Add character",
-		selectElementClient: "Select path to elementclient.exe",
-		emptyMessage: "Characters list is empty",
-		gamePathMock: "Please select elementclient.exe",
 		language: "Lang",
 		backToList: "Back to characters list",
+		addCharacter: "Add character",
+		emptyMessage: "Characters list is empty",
+		gamePathMock: "Please select elementclient.exe",
+		selectElementClient: "Select path to elementclient.exe",
 
 		charName: "Name at launcher",
-		charIconPath: "Character icon",
-		charDescription: "Description (not required)",
-		charRealName: "Character name at game (not required)",
 		charLogin: "Account login",
+		charIconPath: "Character icon",
+		charRealName: "Character name at game (not required)",
 		charPassword: "Account password",
+		charDescription: "Description (not required)",
 
-		create: "Create",
-
+		edit: "edit",
 		start: "Start",
 		remove: "Remove",
-
-		requireGamePath: "Previosly setup elementclient path",
+		create: "Save!",
 
 		acceptRemove: "Really remove it?",
+		requireGamePath: "Previosly setup elementclient path",
 	},
 };
 
@@ -61,7 +59,6 @@ export const $language = atom<Languages>(
 		: localStorage.lang,
 );
 export const $translations = computed([$language], (lang) => {
-	console.log(translations[lang], lang);
 	return { ...translations[lang] };
 });
 

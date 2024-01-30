@@ -20,7 +20,7 @@ export const $characters = map<Character[]>(
 );
 
 const create = action($characters, "create", ($store, charInfo: Character) => {
-	const newList = [charInfo, ...$store.get()];
+	const newList = [...$store.get(), { ...charInfo }];
 	localStorage.setItem("chars", JSON.stringify(newList));
 	$store.set(newList);
 });
@@ -28,6 +28,12 @@ const create = action($characters, "create", ($store, charInfo: Character) => {
 const remove = action($characters, "remove", ($store, id: number) => {
 	if (!confirm($translations.get().acceptRemove.toString())) return;
 	const newList = $store.get().filter((_, _id) => id !== _id);
+	localStorage.setItem("chars", JSON.stringify(newList));
+	$store.set(newList);
+});
+
+const update = action($characters, "remove", ($store, id: number, charInfo: Character) => {
+	const newList = $store.get().map((c, _id) => (id !== _id ? c : charInfo));
 	localStorage.setItem("chars", JSON.stringify(newList));
 	$store.set(newList);
 });
@@ -47,4 +53,4 @@ const start = action($characters, "start", async ($store, id: number) => {
 	console.log(result);
 });
 
-export const $characterActions = { create, remove, start };
+export const $characterActions = { create, remove, update, start };

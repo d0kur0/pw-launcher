@@ -1,21 +1,18 @@
-import { Anchor, Box, IconButton } from "@hope-ui/solid";
+import { For } from "solid-js";
 import { useStore } from "@nanostores/solid";
-import { $translations } from "../stores/language";
-import { $gamePath, $gamePathActions } from "../stores/gamePath";
 import { CgSelectR } from "solid-icons/cg";
 import { useNavigate } from "@solidjs/router";
+import { $translations } from "../stores/language";
+import { Anchor, Box, Button } from "@hope-ui/solid";
+import { $gamePath, $gamePathActions } from "../stores/gamePath";
 import { $characterActions, $characters } from "../stores/characters";
-import { For } from "solid-js";
-import { FaRegularTrashCan } from "solid-icons/fa";
 
 import plug from "../assets/plug.webp";
 
 export function Characters() {
-	const characters = useStore($characters);
 	const gamePath = useStore($gamePath);
+	const characters = useStore($characters);
 	const translations = useStore($translations);
-
-	console.log(characters());
 
 	const navigate = useNavigate();
 
@@ -23,24 +20,24 @@ export function Characters() {
 		<Box>
 			<Box
 				css={{
+					py: 8,
+					mb: 16,
+					px: 10,
+					gap: 9,
 					height: "40px",
 					display: "flex",
 					alignItems: "center",
-					gap: 9,
-					mb: 16,
-					backgroundColor: "$neutral3",
-					px: 10,
-					py: 8,
 					borderRadius: "6px",
+					backgroundColor: "$neutral3",
 				}}
 			>
 				<Box
 					css={{
 						flex: "1 1 0",
+						color: "$neutral11",
+						overflow: "hidden",
 						whiteSpace: "nowrap",
 						textOverflow: "ellipsis",
-						overflow: "hidden",
-						color: "$neutral11",
 					}}
 				>
 					{gamePath() || translations().gamePathMock}
@@ -49,13 +46,13 @@ export function Characters() {
 				<Box
 					as="button"
 					css={{
+						gap: 6,
+						color: "$accent11",
 						border: "none",
 						cursor: "pointer",
-						backgroundColor: "transparent",
-						color: "$accent11",
 						display: "flex",
-						gap: 6,
 						alignItems: "center",
+						backgroundColor: "transparent",
 					}}
 					onClick={$gamePathActions.selectGamePath}
 				>
@@ -67,16 +64,16 @@ export function Characters() {
 				<Box
 					css={{
 						p: 40,
-						border: "2px dashed",
-						borderColor: "$neutral7",
-						borderRadius: "8px",
-						textAlign: "center",
 						color: "$neutral10",
 						height: "calc(var(--viewport-height) - 86px)",
+						border: "2px dashed",
 						display: "flex",
+						textAlign: "center",
 						alignItems: "center",
-						justifyContent: "center",
+						borderColor: "$neutral7",
+						borderRadius: "8px",
 						flexDirection: "column",
+						justifyContent: "center",
 					}}
 				>
 					<Box>{translations().emptyMessage}</Box>
@@ -93,13 +90,13 @@ export function Characters() {
 					<For each={characters()}>
 						{(char, id) => (
 							<Box
-								onClick={() => $characterActions.start(id())}
 								css={{
-									position: "relative",
-									p: 16,
+									p: 12,
+									gap: 10,
 									cursor: "pointer",
 									display: "flex",
-									gap: 10,
+									flexWrap: "wrap",
+									position: "relative",
 									alignItems: "center",
 									borderRadius: 8,
 									backgroundColor: "$neutral2",
@@ -114,18 +111,37 @@ export function Characters() {
 									<Box css={{ color: "$neutral9" }}>{char.description || "-"}</Box>
 								</Box>
 
-								<IconButton
-									css={{ position: "absolute", top: "10px", right: "10px" }}
-									aria-label="remove"
-									icon={<FaRegularTrashCan />}
-									size="xs"
-									onClick={(event: Event) => {
-										event.stopPropagation();
-										event.stopImmediatePropagation();
-										$characterActions.remove(id());
-									}}
-									colorScheme="danger"
-								/>
+								<Box css={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "center" }}>
+									<Button
+										size="xs"
+										onClick={() => $characterActions.start(id())}
+										variant="outline"
+										fullWidth={true}
+										colorScheme="success"
+									>
+										{translations().start}
+									</Button>
+
+									<Button
+										size="xs"
+										onClick={() => navigate(`/edit/${id()}`)}
+										variant="outline"
+										fullWidth={true}
+										colorScheme="primary"
+									>
+										{translations().edit}
+									</Button>
+
+									<Button
+										size="xs"
+										variant="outline"
+										onClick={() => $characterActions.remove(id())}
+										fullWidth={true}
+										colorScheme="danger"
+									>
+										{translations().remove}
+									</Button>
+								</Box>
 							</Box>
 						)}
 					</For>

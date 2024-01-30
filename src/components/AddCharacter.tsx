@@ -1,11 +1,11 @@
 import { Anchor, Box, Button, Input } from "@hope-ui/solid";
 import { useStore } from "@nanostores/solid";
-import { useNavigate } from "@solidjs/router";
+import { useNavigate, useParams } from "@solidjs/router";
 import { $translations } from "../stores/language";
 import { IoArrowBackSharp } from "solid-icons/io";
-import { For } from "solid-js";
+import { For, createEffect, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
-import { $characterActions } from "../stores/characters";
+import { $characterActions, $characters, Character } from "../stores/characters";
 
 import ea from "../assets/ea.png";
 import em from "../assets/em.png";
@@ -24,30 +24,39 @@ const icons = [ea, ep, wb, wf, mg, wr, em, es, sb, sm, ta, tp];
 
 export function AddCharacter() {
 	const navigate = useNavigate();
+	const characters = useStore($characters);
 	const translations = useStore($translations);
 
-	const [getFormValues, setFormValues] = createStore({
+	const { id } = useParams();
+
+	const [getFormValues, setFormValues] = createStore<Character>({
 		name: "",
 		iconPath: "",
-		description: "",
 		charName: "",
 		charLogin: "",
+		description: "",
 		charPassword: "",
 	});
 
-	const handleCreate = (event: Event) => {
+	onMount(() => {
+		const char = characters()[id as never];
+		char && setFormValues(char);
+	});
+
+	const handleSubmit = (event: Event) => {
 		event.preventDefault();
-		$characterActions.create(getFormValues);
+		id || $characterActions.create(getFormValues);
+		id && $characterActions.update(+id, getFormValues);
 		navigate("/");
 	};
 
 	return (
-		<form onSubmit={handleCreate}>
+		<form onSubmit={handleSubmit}>
 			<Box>
 				<Anchor
-					onClick={() => navigate("/")}
 					css={{ display: "flex", alignItems: "center", gap: 5 }}
 					color="$info10"
+					onClick={() => navigate("/")}
 				>
 					<IoArrowBackSharp />
 					{translations().backToList}
@@ -56,31 +65,36 @@ export function AddCharacter() {
 
 			<Box css={{ mt: 24, display: "flex", flexDirection: "column", gap: 14 }}>
 				<Input
+					value={getFormValues.name}
 					onInput={(v) => setFormValues((c) => ({ ...c, name: v.target.value }))}
-					required
+					required={true}
 					placeholder={translations().charName.toString()}
 				/>
 
 				<Input
+					value={getFormValues.description}
 					onInput={(v) => setFormValues((c) => ({ ...c, description: v.target.value }))}
 					placeholder={translations().charDescription.toString()}
 				/>
 
 				<Input
+					value={getFormValues.charName}
 					onInput={(v) => setFormValues((c) => ({ ...c, charName: v.target.value }))}
 					placeholder={translations().charRealName.toString()}
 				/>
 
 				<Input
+					value={getFormValues.charLogin}
 					onInput={(v) => setFormValues((c) => ({ ...c, charLogin: v.target.value }))}
-					required
+					required={true}
 					placeholder={translations().charLogin.toString()}
 				/>
 
 				<Input
-					onInput={(v) => setFormValues((c) => ({ ...c, charPassword: v.target.value }))}
-					required
 					type="password"
+					value={getFormValues.charPassword}
+					onInput={(v) => setFormValues((c) => ({ ...c, charPassword: v.target.value }))}
+					required={true}
 					placeholder={translations().charPassword.toString()}
 				/>
 			</Box>
@@ -92,7 +106,6 @@ export function AddCharacter() {
 					<For each={icons}>
 						{(icon) => (
 							<Box
-								onClick={() => setFormValues((v) => ({ ...v, iconPath: icon }))}
 								as="img"
 								css={{
 									width: "35px",
@@ -101,6 +114,7 @@ export function AddCharacter() {
 								}}
 								alt="-"
 								src={icon}
+								onClick={() => setFormValues((v) => ({ ...v, iconPath: icon }))}
 							/>
 						)}
 					</For>
