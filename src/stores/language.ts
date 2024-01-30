@@ -39,7 +39,7 @@ const translations: Record<Languages, Record<string, string | number>> = {
 		charPassword: "Account password",
 		charDescription: "Description (not required)",
 
-		edit: "edit",
+		edit: "Edit",
 		start: "Start",
 		remove: "Remove",
 		create: "Save!",
