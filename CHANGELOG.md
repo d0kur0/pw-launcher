@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/d0kur0/pw-launcher/compare/v1.2.0...v1.3.0) (2024-01-31)
+
+
+### Features
+
+* update charactes list layout ([a08a7cf](https://github.com/d0kur0/pw-launcher/commit/a08a7cfc6556c55642243101581515f6e6b9bf79))
+
 # [1.2.0](https://github.com/d0kur0/pw-launcher/compare/v1.1.0...v1.2.0) (2024-01-30)
 
 
