@@ -6,6 +6,9 @@ import { $translations } from "../stores/language";
 import { Anchor, Box, Button } from "@hope-ui/solid";
 import { $gamePath, $gamePathActions } from "../stores/gamePath";
 import { $characterActions, $characters } from "../stores/characters";
+import { VsDebugStart } from "solid-icons/vs";
+import { AiOutlineEdit } from "solid-icons/ai";
+import { AiTwotoneDelete } from "solid-icons/ai";
 
 import plug from "../assets/plug.webp";
 
@@ -103,43 +106,46 @@ export function Characters() {
 								}}
 							>
 								<Box>
-									<img style={{ width: "50px" }} src={char.iconPath ? char.iconPath : plug} />
+									<img style={{ width: "38px" }} src={char.iconPath ? char.iconPath : plug} />
 								</Box>
 
-								<Box css={{ flex: "1 1 0", mr: 19 }}>
-									<Box css={{ fontWeight: "bold" }}>{char.name}</Box>
-									<Box css={{ color: "$neutral9" }}>{char.description || "-"}</Box>
+								<Box css={{ flex: "1 1 0" }}>
+									<Box css={{ fontWeight: "500" }}>{char.name}</Box>
+									<Box css={{ color: "$neutral9", lineHeight: 1.1 }}>{char.description || "-"}</Box>
 								</Box>
 
-								<Box css={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "center" }}>
+								<Box css={{ display: "flex", gap: 6, alignItems: "center" }}>
 									<Button
+										css={{ px: 5 }}
 										size="xs"
 										onClick={() => $characterActions.start(id())}
 										variant="outline"
 										fullWidth={true}
 										colorScheme="success"
 									>
-										{translations().start}
+										<VsDebugStart style={{ width: "20px", height: "20px" }} />
 									</Button>
 
 									<Button
+										css={{ px: 5 }}
 										size="xs"
 										onClick={() => navigate(`/edit/${id()}`)}
 										variant="outline"
 										fullWidth={true}
 										colorScheme="primary"
 									>
-										{translations().edit}
+										<AiOutlineEdit style={{ width: "20px", height: "20px" }} />
 									</Button>
 
 									<Button
+										css={{ px: 5 }}
 										size="xs"
 										variant="outline"
 										onClick={() => $characterActions.remove(id())}
 										fullWidth={true}
 										colorScheme="danger"
 									>
-										{translations().remove}
+										<AiTwotoneDelete style={{ width: "20px", height: "20px" }} />
 									</Button>
 								</Box>
 							</Box>

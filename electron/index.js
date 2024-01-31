@@ -24,13 +24,14 @@ const createWindow = () => {
 	const mainWindow = new BrowserWindow({
 		icon: "../icons/icon.png",
 		frame: false,
-		width: 650,
+		width: 400,
 		height: 690,
 		webPreferences: {
 			webSecurity: false,
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
+		resizable: false,
 	});
 
 	isDev && mainWindow.loadURL("http://localhost:3000");
